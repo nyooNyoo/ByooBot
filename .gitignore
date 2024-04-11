@@ -1,1 +1,11 @@
+# Secrets
 bot.token
+
+# CMake
+/build/CMakeCache.txt
+/build/*.cmake
+/build/Makefile
+/build/CMakeFiles/
+
+# bin
+/bin/*
