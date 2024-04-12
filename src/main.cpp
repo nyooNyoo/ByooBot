@@ -1,6 +1,9 @@
 #include <tcFileUtilities.hpp>
+#include <tcPingCommand.hpp>
 
 #include <dpp/dpp.h>
+
+#include <string>
     
 static std::string BOT_TOKEN_FILE = "../bot.token";
     
@@ -8,22 +11,16 @@ int main() {
 
     std::string botToken = tcFileUtilities::ReadStringFromFile(BOT_TOKEN_FILE);
 
-    dpp::cluster bot(botToken);
-    
+    dpp::cluster bot(botToken, dpp::i_default_intents | dpp::i_message_content);
+    dpp::commandhandler command_handler(&bot);
+
     bot.on_log(dpp::utility::cout_logger());
+
+    command_handler.add_prefix("?");
     
-    bot.on_slashcommand([](const dpp::slashcommand_t& event) {
-            if (event.command.get_command_name() == "ping") {
-            event.reply("Pong!");
-        }
-    });
-    
-    bot.on_ready([&bot](const dpp::ready_t& event) {
-        if (dpp::run_once<struct register_bot_commands>()) {
-            bot.global_command_create(
-                dpp::slashcommand("ping", "Ping pong!", bot.me.id)
-            );
-        }
+    bot.on_ready([&command_handler](const dpp::ready_t& event) {
+
+        command_handler.add_command( tcPingCommand::command, tcPingCommand::parameters, tcPingCommand::PingHandler );
     });
     
     bot.start(dpp::st_wait);
