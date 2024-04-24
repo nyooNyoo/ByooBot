@@ -1,4 +1,4 @@
-#include "../include/tcFileUtilities.hpp"
+#include "../inc/tcFileUtilities.hpp"
 
 #include <algorithm>
 #include <fstream>

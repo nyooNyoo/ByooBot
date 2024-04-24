@@ -14,10 +14,7 @@ public:
   // param settings
   static dpp::parameter_registration_t vsParameters;
   // function to be wrapped in dpp::command_handler
-  static void PingHandler(const std::string &command,
-                          const dpp::parameter_list_t &parameters,
-                          dpp::message_create_t,
-                          tcMessageHandler::tcMessageHandler *);
+  static handler PingHandler;
 };
 
 #endif
