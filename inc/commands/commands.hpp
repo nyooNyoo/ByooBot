@@ -5,8 +5,8 @@
 
 #include <string>
 
-typedef std::function<void(const std::string &, const dpp::parameter_list_t,
-                           dpp::message_create_t, class messagehandler *)>
+typedef std::function<void(const std::string &, dpp::message_create_t,
+                           class messagehandler *)>
     command_handler;
 
 struct command_definition {
