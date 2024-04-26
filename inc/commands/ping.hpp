@@ -4,10 +4,10 @@
 #include <dpp/dispatcher.h>
 #include <string>
 
-#include "../messagehandler.hpp"
+#include "../message_handler.hpp"
 
 void ping_handler(const std::string &command, dpp::message_create_t src,
-                  messagehandler *handler);
+                  message_handler *handler);
 
 static std::string ping_description = "Pings the bot and returns the delay";
 

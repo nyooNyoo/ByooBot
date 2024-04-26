@@ -7,7 +7,7 @@
 #include <string>
 
 void ping_handler(const std::string &command, dpp::message_create_t src,
-                  messagehandler *handler) {
+                  message_handler *handler) {
   double now = std::chrono::duration_cast<std::chrono::milliseconds>(
                    std::chrono::system_clock::now().time_since_epoch())
                    .count();

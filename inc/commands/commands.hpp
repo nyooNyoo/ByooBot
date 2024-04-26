@@ -6,7 +6,7 @@
 #include <string>
 
 typedef std::function<void(const std::string &, dpp::message_create_t,
-                           class messagehandler *)>
+                           class message_handler *)>
     command_handler;
 
 struct command_definition {

@@ -8,7 +8,7 @@
 #include "../inc/commands/help.hpp"
 #include "../inc/commands/ping.hpp"
 #include "../inc/file_utilities.hpp"
-#include "../inc/messagehandler.hpp"
+#include "../inc/message_handler.hpp"
 
 static std::string BOT_TOKEN_FILE = "../bot.token";
 
@@ -21,7 +21,7 @@ int main() {
       {"help", {help_handler, help_description}}};
 
   dpp::cluster bot(botToken, dpp::i_default_intents | dpp::i_message_content);
-  messagehandler message_handler(&bot);
+  message_handler message_handler(&bot);
 
   bot.on_log(dpp::utility::cout_logger());
 
