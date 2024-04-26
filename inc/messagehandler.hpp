@@ -1,5 +1,5 @@
-#ifndef MESSAGEHANDLER_HPP_
-#define MESSAGEHANDLER_HPP_
+#ifndef MESSAGEHANDLER__HPP__
+#define MESSAGEHANDLER__HPP__
 
 #include <dpp/commandhandler.h>
 #include <dpp/dispatcher.h>
@@ -47,4 +47,4 @@ public:
   bool string_has_prefix(std::string &s);
 };
 
-#endif // !MESSAGEHANDLER_HPP_
+#endif // !MESSAGEHANDLER__HPP__

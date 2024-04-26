@@ -1,5 +1,5 @@
-#ifndef COMMAND_HPP_
-#define COMMAND_HPP_
+#ifndef COMMAND__HPP__
+#define COMMAND__HPP__
 
 #include <dpp/dpp.h>
 
@@ -16,4 +16,4 @@ struct command_definition {
   std::string description;
 };
 
-#endif // !COMMAND_HPP_
+#endif // !COMMAND__HPP__

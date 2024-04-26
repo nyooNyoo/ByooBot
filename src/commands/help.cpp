@@ -6,7 +6,7 @@ void help_handler(const std::string &command, dpp::message_create_t src,
                   messagehandler *handler) {
   std::stringstream ss;
   for (auto &[key, value] : handler->commands) {
-    ss << key << ": " << value.description;
+    ss << key << ": " << value.description << "\n";
   }
   src.send(ss.str());
 }

@@ -1,5 +1,5 @@
-#ifndef TCHELPCOMMAND__HPP__
-#define TCHELPCOMMAND__HPP__
+#ifndef HELPCOMMAND__HPP__
+#define HELPCOMMAND__HPP__
 
 #include "../messagehandler.hpp"
 #include <dpp/dpp.h>
@@ -9,4 +9,4 @@ void help_handler(const std::string &command, dpp::message_create_t src,
 
 static std::string help_description = "Lists the commands idk";
 
-#endif // !TCHELPCOMMAND__HPP__
+#endif // !HELPCOMMAND__HPP__

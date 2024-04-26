@@ -1,5 +1,5 @@
-#ifndef TCPINGCOMMAND_HPP_
-#define TCPINGCOMMAND_HPP_
+#ifndef PINGCOMMAND__HPP__
+#define PINGCOMMAND__HPP__
 
 #include <dpp/dispatcher.h>
 #include <string>
@@ -11,4 +11,4 @@ void ping_handler(const std::string &command, dpp::message_create_t src,
 
 static std::string ping_description = "Pings the bot and returns the delay";
 
-#endif
+#endif //! PINGCOMMAND__HPP__
