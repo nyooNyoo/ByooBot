@@ -1,4 +1,5 @@
 # Secrets
+config.json
 bot.token
 
 # CMake
@@ -9,3 +10,6 @@ bot.token
 
 # bin
 /bin/*
+
+# mySQL
+/mySQL/

@@ -1,0 +1,12 @@
+{
+  "devtoken": "<dev bot token>",
+  "devchannel": "<testing channel id>",
+  "maintoken": "<release bot token>",
+  "owner": "<bot owner user id",
+  "shardcount": 2,
+  "dbhost": "<mysql host>",
+  "dbport": 3306,
+  "dbuser": "<mysql username>",
+  "dbpass": "<mysql password>",
+  "dbname": "<mysql database name>"
+}

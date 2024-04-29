@@ -1,3 +1,4 @@
+#include <fstream>
 #include <string>
 
 #include <dpp/commandhandler.h>
@@ -7,20 +8,24 @@
 #include "../inc/commands/commands.hpp"
 #include "../inc/commands/help.hpp"
 #include "../inc/commands/ping.hpp"
-#include "../inc/file_utilities.hpp"
 #include "../inc/message_handler.hpp"
 
-static std::string BOT_TOKEN_FILE = "../bot.token";
+nlohmann::json config;
 
 int main() {
 
-  std::string botToken = file_utilities::ReadStringFromFile(BOT_TOKEN_FILE);
+  /* Load config file */
+  std::ifstream config_stream("../config.json");
+  config = nlohmann::json::parse(config_stream);
 
+  /* Initialize commands */
   std::unordered_map<std::string, command_definition> commands = {
       {"ping", {ping_handler, ping_description}},
       {"help", {help_handler, help_description}}};
 
-  dpp::cluster bot(botToken, dpp::i_default_intents | dpp::i_message_content);
+  /* Start bot */
+  dpp::cluster bot(config["devtoken"],
+                   dpp::i_default_intents | dpp::i_message_content);
   message_handler message_handler(&bot);
 
   bot.on_log(dpp::utility::cout_logger());
