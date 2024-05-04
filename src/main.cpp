@@ -1,15 +1,13 @@
 #include <cstdlib>
-#include <fstream>
 #include <string>
 
-#include <dpp/commandhandler.h>
 #include <dpp/dpp.h>
 #include <getopt.h>
-#include <unordered_map>
 
 #include "../inc/commands/commands.hpp"
 #include "../inc/commands/help.hpp"
 #include "../inc/commands/ping.hpp"
+#include "../inc/config.hpp"
 #include "../inc/message_handler.hpp"
 
 nlohmann::json config;
@@ -43,18 +41,17 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  /* Load config file */
-  std::ifstream config_stream("../config.json");
-  config = nlohmann::json::parse(config_stream);
+  conf::set_dev(dev);
+  std::string token = conf::is_dev() ? conf::get_config("devtoken")
+                                     : conf::get_config("maintoken");
 
   /* Initialize commands */
   std::unordered_map<std::string, command_definition> commands = {
-      {"ping", {ping_handler, ping_description}},
-      {"help", {help_handler, help_description}}};
+      {"ping", {ping_handler, ping_permission, ping_description}},
+      {"help", {help_handler, help_permission, help_description}}};
 
   /* Start bot */
-  dpp::cluster bot(dev ? config["devtoken"] : config["maintoken"],
-                   dpp::i_default_intents | dpp::i_message_content);
+  dpp::cluster bot(token, dpp::i_default_intents | dpp::i_message_content);
   message_handler message_handler(&bot);
 
   bot.on_log(dpp::utility::cout_logger());

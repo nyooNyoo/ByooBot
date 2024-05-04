@@ -37,6 +37,8 @@ public:
                                command_handler handler,
                                const std::string &description = "");
 
+  message_handler &remove_command(const std::string &command);
+
   message_handler &add_hook(const dpp::snowflake &channel_id,
                             channel_hook channel_hook);
 
